@@ -24,6 +24,9 @@ export default {
 .fas {
   color: red;
 }
+.fas:hover {
+  transform: scale(1.3);
+}
 .task {
   background: #f4f4f4;
   margin: 5px;
@@ -40,6 +43,6 @@ export default {
   justify-content: space-between;
 }
 .task:hover {
-  transform: scale(0.99);
+  background: #cecece;
 }
 </style>

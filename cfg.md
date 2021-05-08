@@ -15,3 +15,5 @@ serve -s dist (to compile dist folder to production server)
 npm i json-server
 
 create script and run (npm run backend)
+
+npm install vue-router@next (vue router)

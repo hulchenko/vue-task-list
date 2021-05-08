@@ -5,31 +5,24 @@
       title="Task List"
       :showAddTask="showAddTask"
     />
-    <div v-show="showAddTask"><AddTask @add-task="addTask" /></div>
-    <p>*double click to set/remove a reminder*</p>
-    <Tasks
-      @toggle-reminder="toggleReminder"
-      @delete-task="deleteTask"
-      v-bind:tasks="tasks"
-    />
+    <!--passing value from App.vue file to view files-->
+    <router-view :showAddTask="showAddTask"></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from './components/Header';
-import Tasks from './components/Tasks';
-import AddTask from './components/AddTask';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
   components: {
     Header,
-    Tasks,
-    AddTask,
+    Footer,
   },
   data() {
     return {
-      tasks: [],
       showAddTask: false,
     };
   },
@@ -37,61 +30,26 @@ export default {
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
     },
-    addTask(task) {
-      this.tasks = [...this.tasks, task];
-    },
-    deleteTask(id) {
-      if (confirm('Are you sure?')) {
-        this.tasks = this.tasks.filter((task) => task.id !== id);
-      }
-    },
-    toggleReminder(id) {
-      this.tasks = this.tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
-      );
-    },
-  },
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: 'Phone bill',
-        day: 'May 1st at 2:30 PM',
-        reminder: true,
-      },
-      {
-        id: 2,
-        text: 'Press Conference',
-        day: 'June 5th at 5:30 PM',
-        reminder: true,
-      },
-      {
-        id: 3,
-        text: 'Dentist Appointment',
-        day: 'September 10th at 10:30 AM',
-        reminder: false,
-      },
-    ];
   },
 };
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 .container {
   max-width: 500px;
-  margin: 30px auto;
+  margin: 5rem auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  border: 1px solid green;
   padding: 30px;
   border-radius: 5px;
   user-select: none;
@@ -99,6 +57,10 @@ body {
 
 .container p {
   font-size: 12px;
+}
+
+.note {
+  text-align: center;
 }
 
 .btn {
@@ -114,11 +76,16 @@ body {
   font-size: 15px;
   font-family: inherit;
 }
+.btn:hover {
+  transform: scale(1.01);
+}
+
 .btn:focus {
   outline: none;
 }
+
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.99);
 }
 .btn-block {
   display: block;
