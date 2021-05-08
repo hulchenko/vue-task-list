@@ -1,31 +1,45 @@
 <template>
   <div class="container">
-    <Header title="Task List" />
+    <Header
+      @toggle-add-task="toggleAddTask"
+      title="Task List"
+      :showAddTask="showAddTask"
+    />
+    <div v-show="showAddTask"><AddTask @add-task="addTask" /></div>
+    <p>*double click to set/remove a reminder*</p>
     <Tasks
       @toggle-reminder="toggleReminder"
       @delete-task="deleteTask"
       v-bind:tasks="tasks"
     />
-    <p>*double click to set/remove a reminder*</p>
   </div>
 </template>
 
 <script>
 import Header from './components/Header';
 import Tasks from './components/Tasks';
+import AddTask from './components/AddTask';
 
 export default {
   name: 'App',
   components: {
     Header,
     Tasks,
+    AddTask,
   },
   data() {
     return {
       tasks: [],
+      showAddTask: false,
     };
   },
   methods: {
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
+    },
+    addTask(task) {
+      this.tasks = [...this.tasks, task];
+    },
     deleteTask(id) {
       if (confirm('Are you sure?')) {
         this.tasks = this.tasks.filter((task) => task.id !== id);
@@ -41,20 +55,20 @@ export default {
     this.tasks = [
       {
         id: 1,
-        text: 'Test1',
-        day: 'March 1st at 2:30 PM',
+        text: 'Phone bill',
+        day: 'May 1st at 2:30 PM',
         reminder: true,
       },
       {
         id: 2,
-        text: 'Test2',
-        day: 'March 5th at 5:30 PM',
+        text: 'Press Conference',
+        day: 'June 5th at 5:30 PM',
         reminder: true,
       },
       {
         id: 3,
-        text: 'Test3',
-        day: 'March 10th at 10:30 PM',
+        text: 'Dentist Appointment',
+        day: 'September 10th at 10:30 AM',
         reminder: false,
       },
     ];

@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     onClick() {
-      console.log('Test');
+      this.$emit('btn-click');
     },
   },
 };
