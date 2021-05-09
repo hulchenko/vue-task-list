@@ -2,7 +2,7 @@
 Environment: Vue CLI
 
 # [Static preview](https://hulchenko.github.io/vue-task-list/)
-
+<img src="https://i.imgur.com/I0DEiZb.png" width="700">
 
 ### Local Demo steps:
 
