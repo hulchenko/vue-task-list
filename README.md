@@ -1,7 +1,7 @@
 # Task List
 Environment: Vue CLI
 
-[Static preview](https://hulchenko.github.io/vue-task-list/)
+# [Static preview](https://hulchenko.github.io/vue-task-list/)
 
 
 ### Local Demo steps:
