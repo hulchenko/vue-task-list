@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "backend": "json-server --watch db.json --port 5000",
-    "deploy": "sh deploy.sh"
+    "backend": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
     "core-js": "^3.6.5",
